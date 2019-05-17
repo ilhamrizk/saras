@@ -1,0 +1,9 @@
+[Unit]
+Description=Networking via mesh network B.A.T.M.A.N
+
+[Service]
+Type=oneshot
+ExecStart=/bin/bash /mesh.sh
+
+[Install]
+WantedBy=default.target
