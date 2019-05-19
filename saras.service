@@ -1,0 +1,9 @@
+[Unit]
+Description=program untuk menjalankan saras GUI service
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/local/bin/saras/saras.sh
+
+[Install]
+WantedBy=default.target
