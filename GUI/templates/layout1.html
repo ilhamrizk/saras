@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		{% if title %}
+        	<title>Respack - {{ title }}</title>
+    	{% else %}
+        	<title>Respack</title>
+    	{% endif %}
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+		<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:700, 600,500,400,300' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='contain1.css') }}">
+
+		<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/modules/data.js"></script>
+		<script src="{{ url_for('static', filename='main.js') }}"></script>
+
+		<style>
+			/* Set the size of the div element that contains the map */
+			#map {
+			height: 400px;  /* The height is 400 pixels */
+			width: 100%;  /* The width is the width of the web page */
+			}
+		</style>
+	</head>
+	<body>
+		<!--header-->
+		<div class="header fixed">
+			<div class="topnav">
+				<div class="topnav-right">
+                    <a href="{{ url_for('home') }}" onclick="showLoader()">
+                        <i class="fas fa-undo"></i>
+                      PETS
+                    </a>
+				</div>
+			</div> 
+		</div>
+		<!--dashboard-->
+		<div class="side-nav">
+			<nav>
+				<div class="homebutton">
+					<a href="{{ url_for('respack') }}" onclick="showLoader()"> 
+						<span><i class="fas fa-headset"></i></span>
+						<span>Respack</span>
+					</a>
+				</div>
+				<ul>
+				<!--	{% if title == "Location" %}
+					<li class="active">
+					{% else %}
+					<li>
+					{% endif %}
+						<a href="{{ url_for('location') }}">
+							<span><i class="fas fa-map-marked-alt"></i></span>
+							<span>Location</span>
+						</a>
+					</li>-->
+					{% if title == "Gallery" %}
+        			<li class="active">
+					{% else %}
+					<li>
+    				{% endif %}
+						<a href="{{ url_for('gallery') }}" onclick="showLoader()">
+							<span><i class="fas fa-image"></i></span>
+							<span>Gallery</span>
+						</a>
+					</li>
+				{% if title == "Transfer" %}
+        			<li class="active">
+					{% else %}
+					<li>
+    				{% endif %}
+						<a href="{{ url_for('config') }}" onclick="showLoader()">
+							<span><i class="fas fa-cogs"></i></span>
+							<span>Transfer File</span>
+						</a>
+					</li>
+					{% if title == "About" %}
+        			<li class="active">
+					{% else %}
+					<li>
+    				{% endif %}
+						<a href="{{ url_for('about1') }}" onclick="showLoader()">
+							<span><i class="fas fa-info-circle"></i></span>
+							<span>About</span>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+		<!--content-->
+		<div class="main-content">
+		<div id="loader" style="display:none;"></div>
+		<div style="display:block;" id="myDiv" class="animate-bottom">
+			{% block content %}{% endblock %}
+		</div>
+		</div>
+	</div>
+	<script>
+			function showLoader() {
+				document.getElementById("loader").style.display = "block";
+				document.getElementById("myDiv").style.display = "none";
+			}
+	</script>	
+	</body>
+</html>

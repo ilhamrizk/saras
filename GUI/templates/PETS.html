@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="title">
+	Home
+</div>
+<br>
+<br>
+<div class="main">
+	<!-- <div class="content">
+	<div id="map" style="width:100%; height:400px;" ></div>
+	</div> -->
+	<div class="bundle">
+			<div>
+				<div class="tab">
+					<button class="tablinks" onclick="openCity(event, 'PC 1')" id="defaultOpen">All</button>
+					<button class="tablinks" onclick="openCity(event, 'PC 2')">Warning</button>
+				</div>
+				<div id="PC 1" class="tabcontent">
+					<div id="map1" style="width:100%; height:400px;" ></div>
+				</div>
+				<div id="PC 2" class="tabcontent">
+					<div id="map2" style="width:100%; height:400px;" ></div>
+				</div>
+			</div>
+		</div>
+</div>
+<script>
+		function initMap() {
+		var map1 = new google.maps.Map(document.getElementById('map1'), {
+			zoom: 12,
+			center: {'lat': -6.5344412, 'lng': 107.3664586}
+				});
+		var map2 = new google.maps.Map(document.getElementById('map2'), {
+			zoom: 12,
+			center: {'lat': -6.5344412, 'lng': 107.3664586}
+				});
+
+		if (navigator.geolocation) {
+     		navigator.geolocation.getCurrentPosition(function (position) {
+         		initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        		map1.setCenter(initialLocation);
+				map2.setCenter(initialLocation);
+    		});
+		}
+
+		// Create an array of alphabetical characters used to label the markers.
+		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+			// Add some markers to the map.
+			// Note: The code uses the JavaScript Array.prototype.map() method to
+			// create an array of markers based on a given "locations" array.
+			// The map() method here has nothing to do with the Google Maps API.
+		var markers = locations.map(function(location, i) {
+			return new google.maps.Marker({
+			position: location,
+			label: labels[i % labels.length]
+			});
+			});
+		var markers1 = locations1.map(function(location, i) {
+			return new google.maps.Marker({
+			position: location,
+			label: labels[i % labels.length],
+			map: map2
+			});
+			});
+
+			// Add a marker clusterer to manage the markers.
+			var markerCluster = new MarkerClusterer(map1, markers,
+			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+			var markerCluster1 = new MarkerClusterer(map2, markers1,
+			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+		}
+			var locations = {% autoescape on %} {{tempat}} {% endautoescape %}
+			var locations1 = {% autoescape on %} {{tempatwarning}} {% endautoescape %}
+</script>
+
+<script>
+		function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+				  tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+				  tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		function myFunction() {
+		  document.getElementById("myDropdown").classList.toggle("show");
+		}
+
+		// Close the dropdown if the user clicks outside of it
+		window.onclick = function(event) {
+		  if (!event.target.matches('.dropbtn')) {
+				var dropdowns = document.getElementsByClassName("dropdown-content");
+				var i;
+			for (i = 0; i < dropdowns.length; i++) {
+				  var openDropdown = dropdowns[i];
+				  if (openDropdown.classList.contains('show')) {
+				openDropdown.classList.remove('show');
+					  }
+				}
+			  }
+		}	
+
+
+</script>
+
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb4xkb3rM8h2I65qWYVOvYFQvBMKbFQ9Q&callback=initMap"></script>
+{% endblock content %}

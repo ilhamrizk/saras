@@ -1,0 +1,172 @@
+{% extends "layout1.html" %}
+{% block content %}
+	<div class="title">
+        Home
+    </div>
+    <br>
+    <br>
+    <div class="main">
+        <div class="bundle">
+            <div>
+                <div class="tab">
+                    <button class="tablinks" onclick="openCity(event, 'PC1')" id='defaultOpen'>RESPACK 1</button>
+                    <button class="tablinks" onclick="openCity(event, 'PC2')">RESPACK 2</button>
+                    <button class="tablinks" onclick="openCity(event, 'PC3')">RESPACK 3</button>
+                </div>
+                <div id="PC1" class="tabcontent">
+                    <div>
+                        <div id="map" style="width:100%; height:450px;" ></div>
+                    </div>
+                </div>
+                <div id="PC2" class="tabcontent">
+                    <div>
+                        <div id="map2" style="width:100%; height:450px;" ></div>
+                    </div>
+                </div>
+                <div id="PC3" class="tabcontent">
+                    <div>
+                        <div id="map3" style="width:100%; height:450px;" ></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+function initMap() {
+var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 12,
+    center: {'lat': -6.4344412, 'lng': 107.3664586},
+    mapTypeId: 'terrain'
+});
+
+var map2 = new google.maps.Map(document.getElementById('map2'), {
+    zoom: 12,
+    center: {'lat': -6.5344412, 'lng': 107.3664586},
+    mapTypeId: 'terrain'
+});
+
+var map3 = new google.maps.Map(document.getElementById('map3'), {
+    zoom: 12,
+    center: {'lat': -6.5344412, 'lng': 107.3664586},
+    mapTypeId: 'terrain'
+});
+
+if (navigator.geolocation) {
+     		navigator.geolocation.getCurrentPosition(function (position) {
+         		initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        		map.setCenter(initialLocation);
+				map2.setCenter(initialLocation);
+                map3.setCenter(initialLocation);
+    		});
+		}
+
+var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    geodesic: true,
+    strokeColor: '#ff3030',
+    strokeOpacity: 1.0,
+    strokeWeight: 8
+});
+
+var flightPath2 = new google.maps.Polyline({
+    path: flightPlanCoordinates2,
+    geodesic: true,
+    strokeColor: '#ff3030',
+    strokeOpacity: 1.0,
+    strokeWeight: 8
+});
+
+var flightPath3 = new google.maps.Polyline({
+    path: flightPlanCoordinates3,
+    geodesic: true,
+    strokeColor: '#ff3030',
+    strokeOpacity: 1.0,
+    strokeWeight: 8
+});
+
+flightPath.setMap(map);
+flightPath2.setMap(map2);
+flightPath3.setMap(map3);
+}
+
+var flightPlanCoordinates = {% autoescape on %} {{tempatrespack1}} {% endautoescape %};
+var flightPlanCoordinates2 = {% autoescape on %} {{tempatrespack2}} {% endautoescape %};
+var flightPlanCoordinates3 = {% autoescape on %} {{tempatrespack3}} {% endautoescape %};
+</script>
+<!-- <script>
+        // function initMap2() {
+        // var map2 = new google.maps.Map(document.getElementById('map2'), {
+        //     zoom: 3,
+        //     center: {'lat': -6.5344412, 'lng': 107.3664586},
+        //     mapTypeId: 'terrain'
+        // });
+
+        var flightPlanCoordinates2 = {% autoescape on %} {{tempatrespack2}} {% endautoescape %};
+        var flightPath2 = new google.maps.Polyline({
+            path: flightPlanCoordinates2,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2
+        });
+
+        flightPath2.setMap(map2);
+        }
+    </script>
+<script>
+   function initMap3() {
+    var map3 = new google.maps.Map(document.getElementById('map3'), {
+        zoom: 3,
+        center: {lat: 0, lng: -180},
+        mapTypeId: 'terrain'
+    });
+
+    var flightPlanCoordinates3 = {% autoescape on %} {{tempatrespack3}} {% endautoescape %};
+    var flightPath3 = new google.maps.Polyline({
+        path: flightPlanCoordinates3,
+        geodesic: true,
+        strokeColor: '#FF0000',
+        strokeOpacity: 1.0,
+        strokeWeight: 2
+    });
+
+    flightPath3.setMap(map3);
+    }
+</script> -->
+
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb4xkb3rM8h2I65qWYVOvYFQvBMKbFQ9Q&callback=initMap">
+</script>
+
+<!-- <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb4xkb3rM8h2I65qWYVOvYFQvBMKbFQ9Q&callback=initMap2">
+</script>
+
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCb4xkb3rM8h2I65qWYVOvYFQvBMKbFQ9Q&callback=initMap3">
+</script> -->
+
+<script>
+    function openCity(evt, cityName) {
+			var i, tabcontent, tablinks;
+			tabcontent = document.getElementsByClassName("tabcontent");
+			for (i = 0; i < tabcontent.length; i++) {
+	  			tabcontent[i].style.display = "none";
+			}
+			tablinks = document.getElementsByClassName("tablinks");
+			for (i = 0; i < tablinks.length; i++) {
+	  			tablinks[i].className = tablinks[i].className.replace(" active", "");
+			}
+			document.getElementById(cityName).style.display = "block";
+			evt.currentTarget.className += " active";
+		}
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+		/* When the user clicks on the button, 
+		toggle between hiding and showing the dropdown content */
+		/* When the user clicks on the button, 
+	toggle between hiding and showing the dropdown content */
+</script>
+
+{% endblock content %}

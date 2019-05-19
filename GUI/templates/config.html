@@ -1,0 +1,27 @@
+{% extends "layout1.html" %}
+{% block content %}
+<div class="title">
+    Transfer File
+</div>       
+<br>
+<br>
+<div class="main" >
+    <div class="bundle">
+        <!-- <div>
+            <div class="subtitle">
+            </div>
+            <br> -->
+            <br><br>
+            <div>
+                <a href="{{ url_for('transferfilerespack')}}" >
+                    <button onclick="alert('Mohon Tunggu'); showLoader()" type="button" class="subscriber-button">
+                            Transfer File
+                    </button>
+                    
+                </a>
+            </div>
+            <!-- <br>
+        </div> -->
+    </div>
+</div>
+{% endblock content %}

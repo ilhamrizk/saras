@@ -1,0 +1,150 @@
+.gallery {
+    height: auto;
+    width: 25%;
+    padding: 10px;
+    display: grid;
+    grid-auto-rows: 1fr 1fr;
+}
+
+.img {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    max-width:25%;
+    max-height:25%;
+}
+.img:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+
+div.gallery {
+    border: 1px solid #ccc;
+  }
+  
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%; 
+  height: auto;
+}
+
+div.desc {
+  padding: 2px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+* {
+box-sizing: border-box;
+}
+
+.responsive {
+  padding: 0 6px;
+  float: left;
+  width: 25%;
+}
+  
+  @media only screen and (max-width: 700px) {
+    .responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+  }
+  
+  @media only screen and (max-width: 500px) {
+    .responsive {
+      width: 100%;
+    }
+  }
+
+  .subscriber {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    text-align: center;
+}
+.subscriber div {
+    padding : 10px 20px;
+}
+.subscriber-button{
+    padding: 0.5rem 2rem;
+    border: 0.2rem solid #35475e;
+    border-radius: 0.5rem;
+    width: 100%;
+    font-size: 18px; 
+    color: #eef1f7;
+    background-color: #35475e;
+}
+.subscriber-button:active {
+    color: #35475e;
+    background-color: #eef1f7;
+}
+  
+  .clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: #35475e;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left ;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.5s;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    color: #35475e;
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  color: #35475e;
+  background-color: #fff;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 10px 12px;
+  text-align: center;
+}
+
+.tablinks {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablinks:hover {
+  background-color: #777;
+}
+
+.topadjust {
+  padding-top: 10px;
+}
+
