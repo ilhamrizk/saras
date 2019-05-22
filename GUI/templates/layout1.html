@@ -50,16 +50,6 @@
 					</a>
 				</div>
 				<ul>
-				<!--	{% if title == "Location" %}
-					<li class="active">
-					{% else %}
-					<li>
-					{% endif %}
-						<a href="{{ url_for('location') }}">
-							<span><i class="fas fa-map-marked-alt"></i></span>
-							<span>Location</span>
-						</a>
-					</li>-->
 					{% if title == "Gallery" %}
         			<li class="active">
 					{% else %}
@@ -75,7 +65,7 @@
 					{% else %}
 					<li>
     				{% endif %}
-						<a href="{{ url_for('config') }}" onclick="showLoader()">
+						<a href="{{ url_for('transferRESPACK') }}" onclick="showLoader()">
 							<span><i class="fas fa-cogs"></i></span>
 							<span>Transfer File</span>
 						</a>

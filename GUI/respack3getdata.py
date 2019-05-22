@@ -65,7 +65,7 @@ def write_coordinate(gpsData):
         
         (client1.write_points(pointValue))
                
-os.system("sudo sh /usr/local/bin/saras/mesh.sh")
+os.system("sudo sh /etc/saras/mesh.sh")
 gps_data = read_coordinate()
 write_coordinate(gps_data)
 print("berhasil")

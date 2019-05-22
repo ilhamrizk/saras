@@ -5,7 +5,7 @@ def gettmsidata(pc):
                 filename="tmsidata2.conf"
         elif (pc==3):
                 filename="tmsidata3.conf"
-        f=open("/usr/local/bin/saras/GUI/remote/"+filename)
+        f=open("/etc/saras/GUI/remote/"+filename)
         tmsi = f.read()
         import re
         words = re.split(r'[^\w]',tmsi)
@@ -48,7 +48,7 @@ def getoperator(pc):
         filename="ybts2.conf"
     elif (pc==3):
         filename="ybts3.conf"      
-    f=open("/usr/local/bin/saras/GUI/remote/"+filename)
+    f=open("/etc/saras/GUI/remote/"+filename)
     ybts = f.read()
 
     words = re.split(r'[^\w]',ybts)
@@ -69,7 +69,7 @@ def getoperator(pc):
 
     return operator
 # def gettmsidata2():
-#         f=open("/usr/local/bin/saras/GUI/remote/tmsidata2.conf")
+#         f=open("/etc/saras/GUI/remote/tmsidata2.conf")
 #         tmsi = f.read()
 #         import re
 #         words = re.split(r'[^\w]',tmsi)
@@ -105,7 +105,7 @@ def getoperator(pc):
 #         return pelanggans
 
 # def gettmsidata3():
-#         f=open("/usr/local/bin/saras/GUI/remote/tmsidata3.conf")
+#         f=open("/etc/saras/GUI/remote/tmsidata3.conf")
 #         tmsi = f.read()
 #         import re
 #         words = re.split(r'[^\w]',tmsi)
@@ -148,7 +148,7 @@ def getoperator1(pc):
         file="ybts2.conf"
     elif (pc==3):
         file="ybts3.conf"      
-    f=open("/usr/local/bin/saras/GUI/remote/"+file)
+    f=open("/etc/saras/GUI/remote/"+file)
     ybts = f.read()
 
     words = re.split(r'[^\w]',ybts)
@@ -172,7 +172,7 @@ def getoperator1(pc):
 # def getoperator2():
 #     import re
         
-#     f=open("/usr/local/bin/saras/GUI/remote/ybts2.conf")
+#     f=open("/etc/saras/GUI/remote/ybts2.conf")
 #     ybts = f.read()
 
 #     words = re.split(r'[^\w]',ybts)
@@ -196,7 +196,7 @@ def getoperator1(pc):
 # def getoperator3():
 #     import re
         
-#     f=open("/usr/local/bin/saras/GUI/remote/ybts3.conf")
+#     f=open("/etc/saras/GUI/remote/ybts3.conf")
 #     ybts = f.read()
 
 #     words = re.split(r'[^\w]',ybts)
