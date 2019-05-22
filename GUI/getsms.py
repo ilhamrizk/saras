@@ -7,21 +7,15 @@ import os
 def getsms():
     try:
         list_of_files=glob.glob("/run/user/1000/gvfs/mtp:host=%5Busb%3A002%2C016%5D/Phone/SMSToExcel/*.xls")
-        print('list of files')
         latest_file = max(list_of_files, key=os.path.getctime)
-        print('latest file')
         os.system("sudo cp latest_file /home/david/GUI/remote/sms/")
-        print('copy')
         os.chdir("/home/david/GUI/remote/sms")
-        print('chdir')
         df = pd.read_excel(latest_file, sheet_name='Sheet1')
-        print('lalala')
     except:
         list_of_files=glob.glob("/home/david/GUI/remote/sms/*.xls")
         latest_file = max(list_of_files, key=os.path.getctime)
         os.chdir("/home/david/GUI/remote/sms")
         df = pd.read_excel(latest_file, sheet_name='Sheet1')
-        print('yeyeye')
 
     Addresses = df['Address']
     Name = df['Name']
@@ -39,5 +33,4 @@ def getsms():
                 'BODY' : Body[i]
             }
         )
-    print pesans
     return pesans
