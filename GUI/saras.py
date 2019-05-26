@@ -38,7 +38,7 @@ def PETS():
 @app.route("/transferfilePETS")
 def transferfilePETS():
     #memastikan mesh network aktif dengan mengaktifkan bash script mesh.sh
-    os.system("sudo /usr/local/bin/saras/mesh.sh")
+    os.system("sudo usr/local/bin/saras/mesh.sh")
 
     #transfer file data tmsi dan konfigurasi operasi dari PC1
     try:
@@ -226,7 +226,7 @@ def factoryreset():
     from influxdb.client import InfluxDBClientError
 
     #memastikan mesh network aktif dengan mengaktifkan bash script mesh.sh
-    os.system("sudo /usr/local/bin/saras/mesh.sh")
+    os.system("sudo usr/local/bin/saras/mesh.sh")
 
     #Bagian ini menghapus hasil perekaman jejak
     #mengakses database local
@@ -242,20 +242,20 @@ def factoryreset():
         print(' ')
     #Bagian ini me-reset konfigurasi yang berjalan pada PETS, sehingga menghapus semua daftar pelanggan terhubung, dan menjalankan konfigurasi operator default pada masing-masing MINI PC (MINI PC 1- TELKOMSEL, MINI PC 2 - XL, MINI PC 3 - OOREDOO), kemudian mengulang kembali layanan BTS melalui SSH
     try:
-        os.system("sudo cp /usr/local/bin/saras/GUI/tmsidata.conf /usr/local/bin/saras/GUI/remote/tmsidata1.conf")
-        os.system("sudo cp /usr/local/bin/saras/GUI/ybts-tsel.conf /usr/local/bin/saras/GUI/remote/ybts1.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/ybts-tsel.conf action@172.27.0.4:/usr/local/etc/yate/ybts.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.4:/usr/local/etc/yate/tmsidata.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/tmsidata.conf usr/local/bin/saras/GUI/remote/tmsidata1.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/ybts-tsel.conf usr/local/bin/saras/GUI/remote/ybts1.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/ybts-tsel.conf action@172.27.0.4:/usr/local/etc/yate/ybts.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.4:/usr/local/etc/yate/tmsidata.conf")
         os.system("sudo sshpass -p action ssh action@172.27.0.4 sudo systemctl restart yate.service")
-        os.system("sudo cp /usr/local/bin/saras/GUI/tmsidata.conf /usr/local/bin/saras/GUI/remote/tmsidata2.conf")
-        os.system("sudo cp /usr/local/bin/saras/GUI/ybts-xl.conf /usr/local/bin/saras/GUI/remote/ybts2.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/ybts-xl.conf action@172.27.0.5:/usr/local/etc/yate/ybts.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.5:/usr/local/etc/yate/tmsidata.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/tmsidata.conf usr/local/bin/saras/GUI/remote/tmsidata2.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/ybts-xl.conf usr/local/bin/saras/GUI/remote/ybts2.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/ybts-xl.conf action@172.27.0.5:/usr/local/etc/yate/ybts.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.5:/usr/local/etc/yate/tmsidata.conf")
         os.system("sudo sshpass -p action ssh action@172.27.0.5 sudo systemctl restart yate.service")
-        os.system("sudo cp /usr/local/bin/saras/GUI/tmsidata.conf /usr/local/bin/saras/GUI/remote/tmsidata3.conf")
-        os.system("sudo cp /usr/local/bin/saras/GUI/ybts-isat.conf /usr/local/bin/saras/GUI/remote/ybts3.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/ybts-isat.conf action@172.27.0.6:/usr/local/etc/yate/ybts.conf")
-        os.system("sudo sshpass -p action scp /usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.6:/usr/local/etc/yate/tmsidata.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/tmsidata.conf usr/local/bin/saras/GUI/remote/tmsidata3.conf")
+        os.system("sudo cp usr/local/bin/saras/GUI/ybts-isat.conf usr/local/bin/saras/GUI/remote/ybts3.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/ybts-isat.conf action@172.27.0.6:/usr/local/etc/yate/ybts.conf")
+        os.system("sudo sshpass -p action scp usr/local/bin/saras/GUI/tmsidata.conf action@172.27.0.6:/usr/local/etc/yate/tmsidata.conf")
         os.system("sudo sshpass -p action ssh action@172.27.0.6 sudo systemctl restart yate.service")
     except:
         print(' ')
@@ -279,10 +279,10 @@ def respack():
 def transferfilerespack():
 
     #memastikan mesh network aktif dengan mengaktifkan bash script mesh.sh
-    os.system("sudo /usr/local/bin/saras/mesh.sh")
+    os.system("sudo usr/local/bin/saras/mesh.sh")
 
     #mengambil data jejak gps dari masing-masing RESPACK
-    os.system("sudo python3 /usr/local/bin/saras/GUI/respackgetdata.py")
+    os.system("sudo python3 usr/local/bin/saras/GUI/respackgetdata.py")
 
     #mengambil gambar dari RESPACK 1
     try:       

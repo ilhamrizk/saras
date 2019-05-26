@@ -5,7 +5,7 @@ def gettmsidata(pc):
                 filename="tmsidata2.conf"
         elif (pc==3):
                 filename="tmsidata3.conf"
-        f=open("usr/local/bin/saras/GUI/remote/"+filename)
+        f=open("/usr/local/bin/saras/GUI/remote/"+filename)
         tmsi = f.read()
         import re
         words = re.split(r'[^\w]',tmsi)
@@ -48,7 +48,7 @@ def getoperator(pc):
         filename="ybts2.conf"
     elif (pc==3):
         filename="ybts3.conf"      
-    f=open("usr/local/bin/saras/GUI/remote/"+filename)
+    f=open("/usr/local/bin/saras/GUI/remote/"+filename)
     ybts = f.read()
 
     words = re.split(r'[^\w]',ybts)
