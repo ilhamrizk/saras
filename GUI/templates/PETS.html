@@ -25,53 +25,46 @@
 		</div>
 </div>
 <script>
-		function initMap() {
-		var map1 = new google.maps.Map(document.getElementById('map1'), {
-			zoom: 12,
-			center: {'lat': -6.5344412, 'lng': 107.3664586}
-				});
-		var map2 = new google.maps.Map(document.getElementById('map2'), {
-			zoom: 12,
-			center: {'lat': -6.5344412, 'lng': 107.3664586}
-				});
+function initMap() {
+	var map1 = new google.maps.Map(document.getElementById('map1'), {
+	zoom: 12,
+	center: {'lat': -6.5344412, 'lng': 107.3664586}
+		});
+	var map2 = new google.maps.Map(document.getElementById('map2'), {
+	zoom: 12,
+	center: {'lat': -6.5344412, 'lng': 107.3664586}
+		});
 
-		if (navigator.geolocation) {
-     		navigator.geolocation.getCurrentPosition(function (position) {
-         		initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-        		map1.setCenter(initialLocation);
-				map2.setCenter(initialLocation);
-    		});
-		}
+if (navigator.geolocation) {
+	navigator.geolocation.getCurrentPosition(function (position) {
+	initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+	map1.setCenter(initialLocation);
+		map2.setCenter(initialLocation);
+});
+}
 
-		// Create an array of alphabetical characters used to label the markers.
-		var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+var markers = locations.map(function(location, i) {
+	return new google.maps.Marker({
+	position: location,
+	label: labels[i % labels.length]
+	});
+	});
+var markers1 = locations1.map(function(location, i) {
+	return new google.maps.Marker({
+	position: location,
+	label: labels[i % labels.length],
+	map: map2
+	});
+	});
 
-			// Add some markers to the map.
-			// Note: The code uses the JavaScript Array.prototype.map() method to
-			// create an array of markers based on a given "locations" array.
-			// The map() method here has nothing to do with the Google Maps API.
-		var markers = locations.map(function(location, i) {
-			return new google.maps.Marker({
-			position: location,
-			label: labels[i % labels.length]
-			});
-			});
-		var markers1 = locations1.map(function(location, i) {
-			return new google.maps.Marker({
-			position: location,
-			label: labels[i % labels.length],
-			map: map2
-			});
-			});
-
-			// Add a marker clusterer to manage the markers.
-			var markerCluster = new MarkerClusterer(map1, markers,
-			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-			var markerCluster1 = new MarkerClusterer(map2, markers1,
-			{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
-		}
-			var locations = {% autoescape on %} {{tempat}} {% endautoescape %}
-			var locations1 = {% autoescape on %} {{tempatwarning}} {% endautoescape %}
+// Add a marker clusterer to manage the markers.
+var markerCluster = new MarkerClusterer(map1, markers,
+{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+var markerCluster1 = new MarkerClusterer(map2, markers1,
+{imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'});
+}
+var locations = {% autoescape on %} {{tempat}} {% endautoescape %}
+var locations1 = {% autoescape on %} {{tempatwarning}} {% endautoescape %}
 </script>
 
 <script>
