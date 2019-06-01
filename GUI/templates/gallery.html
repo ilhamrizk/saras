@@ -9,16 +9,16 @@
 		<div class="bundle">
       <div>
       </div>
-          {% for image_name in image_names %}
-              <div class="responsive gallery">
-                  <div class="topadjust">
-                  <a target="_blank" href="{{url_for('send_image', filename=image_name)}}">
-                    <img src="{{url_for('send_image', filename=image_name)}}" alt="image_name" width="600" height="400">
-                  </a>
-                  </div>
-                  <div class="desc">{{ image_name }}</div>
-              </div>
-          {% endfor %}
+{% for image_name in image_names %}
+    <div class="responsive gallery">
+	<div class="topadjust">
+	<a target="_blank" href="{{url_for('send_image', filename=image_name)}}">
+	  <img src="{{url_for('send_image', filename=image_name)}}" alt="image_name" width="600" height="400">
+	</a>
+	</div>
+	<div class="desc">{{ image_name }}</div>
+    </div>
+{% endfor %}
     </div>
 	</div>
 {% endblock content %}
