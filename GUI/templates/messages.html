@@ -8,24 +8,25 @@
 		<div class="pesan">
 			<div></div>
 			<div>
-{% for pesan in pesans %}
-		{% if pesan.TYPE == "Inbox" %}
-			<div class="message inbox">
-		{% else %}
-			<div class="message sent">
-		{% endif %}
-		<h3> {{ pesan.ADDRESS }}(
-			{% if pesan.NAME == 'nan' %}
-				Anonym
-			{% else %}
-				{{ pesan.NAME }}
-			{% endif %})</h3>
-		<div>
-			<h6> {{ pesan.DATE }} </h6>
-			<p> {{ pesan.BODY }} </p>
-		</div>
-	</div>		
-{% endfor %}
+				{% for pesan in pesans %}
+						{% if pesan.TYPE == "Inbox" %}
+							<div class="message inbox">
+						{% else %}
+							<div class="message sent">
+						{% endif %}
+								
+						<h3> {{ pesan.ADDRESS }}(
+							{% if pesan.NAME == 'nan' %}
+								Anonym
+							{% else %}
+								{{ pesan.NAME }}
+							{% endif %})</h3>
+						<div>
+							<h6> {{ pesan.DATE }} </h6>
+							<p> {{ pesan.BODY }} </p>
+						</div>
+					</div>		
+				{% endfor %}
 			</div>
 			<div></div>
 		</div>
