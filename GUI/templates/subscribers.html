@@ -13,65 +13,65 @@
 					<button class="tablinks" onclick="openCity(event, 'PC 2')" id="button2">PC 2</button>
 					<button class="tablinks" onclick="openCity(event, 'PC 3')" id="button3">PC 3</button>
 				</div>
-<div id="PC 1" class="tabcontent">
-	<div class="subscriber subsubtitle">
-		<div>IMSI</div>
-		<div>IMEI</div>
-		<div>Local Number</div>
-		<div>TMSI</div>
-		{% for pelanggan in pelanggans1 %}
-			<div class="normal">{{ pelanggan.IMSI }}</div>
-			<div class="normal">{{ pelanggan.IMEI }}</div>
-			<div class="normal">{{ pelanggan.MSISDN }}</div>
-			<div class="normal">{{ pelanggan.tmsi }}</div>
-		{% endfor %}
-	</div>
-	<br>
-	<a href="{{ url_for('cleartmsi', pc=1, sesbut='button1')}}">
-		<button type="button" class="subscriber-button">
-		DELETE ALL SUBSCRIBERS
-		</button>				
-	</a>
-</div>
-<div id="PC 2" class="tabcontent">
-	<div class="subscriber subsubtitle">
-		<div>IMSI</div>
-		<div>IMEI</div>
-		<div>Local Number</div>
-		<div>TMSI</div>
-		{% for pelanggan in pelanggans2 %}
-			<div class="normal">{{ pelanggan.IMSI }}</div>
-			<div class="normal">{{ pelanggan.IMEI }}</div>
-			<div class="normal">{{ pelanggan.MSISDN }}</div>
-			<div class="normal">{{ pelanggan.tmsi }}</div>
-		{% endfor %}
-	</div>
-	<br>
-	<a href="{{ url_for('cleartmsi', pc=2, sesbut='button2')}}">
-		<button type="button" class="subscriber-button">
-		DELETE ALL SUBSCRIBERS
-		</button>				
-	</a>
-</div>
-<div id="PC 3" class="tabcontent">
-	<div class="subscriber subsubtitle">
-		<div>IMSI</div>
-		<div>IMEI</div>
-		<div>Local Number</div>
-		<div>TMSI</div>
-		{% for pelanggan in pelanggans3 %}
-			<div class="normal">{{ pelanggan.IMSI }}</div>
-			<div class="normal">{{ pelanggan.IMEI }}</div>
-			<div class="normal">{{ pelanggan.MSISDN }}</div>
-			<div class="normal">{{ pelanggan.tmsi }}</div>
-		{% endfor %}
-	</div>
-<br>
-<a href="{{ url_for('cleartmsi', pc=3, sesbut='button3')}}">
-	<button type="button" class="subscriber-button">
-	DELETE ALL SUBSCRIBERS
-	</button>				
-</a>
+					<div id="PC 1" class="tabcontent">
+						<div class="subscriber subsubtitle">
+							<div>IMSI</div>
+							<div>IMEI</div>
+							<div>Local Number</div>
+							<div>TMSI</div>
+							{% for pelanggan in pelanggans1 %}
+								<div class="normal">{{ pelanggan.IMSI }}</div>
+								<div class="normal">{{ pelanggan.IMEI }}</div>
+								<div class="normal">{{ pelanggan.MSISDN }}</div>
+								<div class="normal">{{ pelanggan.tmsi }}</div>
+							{% endfor %}
+						</div>
+						<br>
+						<a href="{{ url_for('cleartmsi', pc=1, sesbut='button1')}}">
+							<button type="button" class="subscriber-button">
+							DELETE ALL SUBSCRIBERS
+							</button>				
+						</a>
+					</div>
+					<div id="PC 2" class="tabcontent">
+						<div class="subscriber subsubtitle">
+							<div>IMSI</div>
+							<div>IMEI</div>
+							<div>Local Number</div>
+							<div>TMSI</div>
+							{% for pelanggan in pelanggans2 %}
+								<div class="normal">{{ pelanggan.IMSI }}</div>
+								<div class="normal">{{ pelanggan.IMEI }}</div>
+								<div class="normal">{{ pelanggan.MSISDN }}</div>
+								<div class="normal">{{ pelanggan.tmsi }}</div>
+							{% endfor %}
+						</div>
+						<br>
+						<a href="{{ url_for('cleartmsi', pc=2, sesbut='button2')}}">
+							<button type="button" class="subscriber-button">
+							DELETE ALL SUBSCRIBERS
+							</button>				
+						</a>
+					</div>
+					<div id="PC 3" class="tabcontent">
+						<div class="subscriber subsubtitle">
+							<div>IMSI</div>
+							<div>IMEI</div>
+							<div>Local Number</div>
+							<div>TMSI</div>
+							{% for pelanggan in pelanggans3 %}
+								<div class="normal">{{ pelanggan.IMSI }}</div>
+								<div class="normal">{{ pelanggan.IMEI }}</div>
+								<div class="normal">{{ pelanggan.MSISDN }}</div>
+								<div class="normal">{{ pelanggan.tmsi }}</div>
+							{% endfor %}
+						</div>
+					<br>
+					<a href="{{ url_for('cleartmsi', pc=3, sesbut='button3')}}">
+						<button type="button" class="subscriber-button">
+						DELETE ALL SUBSCRIBERS
+						</button>				
+					</a>
 				</div>
 			</div>
 			
